@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HBD Neli Agustin Dari Aji(suami)</title>
+    <title>HBD Neli Agustin Dari Aji (suami)</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -26,30 +26,45 @@
       <h3
         class="text-4xl font-bold text-blue-500 animate__animated animate__infinite animate__pulse"
       >
-      Neli Agustin
+        Neli Agustin
       </h3>
       <button
-        href="ucapan.html"
         class="animate__animated animate__delay-1s animate__tada p-2 bg-blue-600 text-white rounded mt-5 hover:bg-blue-900 transition ease-in w-full"
         onclick="ubahKartu()"
       >
         Klik Disini
       </button>
     </div>
+
+    <!-- Musik ulang tahun -->
+    <audio id="musik" loop hidden>
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
+      Browser kamu tidak mendukung tag audio.
+    </audio>
+
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
     <script>
       let kartu = document.getElementById("kartu");
+      let musik = document.getElementById("musik");
+
       function ubahKartu() {
-        kartu.innerHTML = `<h1 class="font-semibold text-wrap animate__animated animate__zoomIn">Selamat ulang tahun, Sayang! Semoga tahun ini makin banyak kebahagiaan, rezeki lancar, dan segala impian jadi kenyataan. Semoga kita terus bisa bareng-bareng dan saling dukung ya! 🎉🎂<h1>
-        <h2 class="mt-3 animate__animated animate__fadeIn">- Dari : AJI PANGESTU -</h2>
-        <button onclick="refresh()" class="animate__animated animate__delay-1s animate__tada p-2 bg-slate-600 text-white rounded mt-5 hover:bg-slate-900 transition ease-in w-full">Tutup</button>
-          `;
+        musik.play(); // Jalankan musik saat tombol ditekan
+
+        kartu.innerHTML = `
+          <h1 class="font-semibold text-wrap animate__animated animate__zoomIn">
+            Selamat ulang tahun, Sayang! Semoga tahun ini makin banyak kebahagiaan, rezeki lancar, dan segala impian jadi kenyataan. Semoga kita terus bisa bareng-bareng dan saling dukung ya! 🎉🎂
+          </h1>
+          <h2 class="mt-3 animate__animated animate__fadeIn">- Dari : AJI PANGESTU -</h2>
+          <button onclick="refresh()" class="animate__animated animate__delay-1s animate__tada p-2 bg-slate-600 text-white rounded mt-5 hover:bg-slate-900 transition ease-in w-full">Tutup</button>
+        `;
       }
+
       confetti({
         particleCount: 200,
         spread: 70,
         origin: { y: 0.6 },
       });
+
       function refresh() {
         location.reload();
       }
