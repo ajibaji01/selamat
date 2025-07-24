@@ -13,9 +13,10 @@
   <body
     class="flex justify-center items-center h-screen"
     style="
-      background-image: url(https://images.unsplash.com/photo-1530273973427-22351773250c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+      background-image: url('neli.jpg');
       background-repeat: no-repeat;
       background-size: cover;
+      background-position: center;
     "
   >
     <div
@@ -44,14 +45,16 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
     <script>
-      let kartu = document.getElementById("kartu");
-      let musik = document.getElementById("musik");
+      const kartu = document.getElementById("kartu");
+      const musik = document.getElementById("musik");
 
       function ubahKartu() {
-        musik.play(); // Jalankan musik saat tombol ditekan
+        musik.play().catch((e) => {
+          console.warn("Autoplay ditolak. Harus interaksi langsung.");
+        });
 
         kartu.innerHTML = `
-          <h1 class="font-semibold text-wrap animate__animated animate__zoomIn">
+          <h1 class="font-semibold break-words animate__animated animate__zoomIn">
             Selamat ulang tahun, Sayang! Semoga tahun ini makin banyak kebahagiaan, rezeki lancar, dan segala impian jadi kenyataan. Semoga kita terus bisa bareng-bareng dan saling dukung ya! 🎉🎂
           </h1>
           <h2 class="mt-3 animate__animated animate__fadeIn">- Dari : AJI PANGESTU -</h2>
@@ -59,6 +62,7 @@
         `;
       }
 
+      // Jalankan confetti saat halaman dimuat
       confetti({
         particleCount: 200,
         spread: 70,
